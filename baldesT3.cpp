@@ -69,22 +69,18 @@ int construyeCandidatos(int k,Estado cand[])
 		        if(i==0&&sol[j].a==maxA&&sol[j].b==sol[k-1].b)//VERIFICA OPERACION 1-- LLENAR BALDE A
 		        {                                                                                                                                                                                                                                                                                                                       		
 			        encontrado=true;
-                    break;
                 } 
                 else if(i==1&&sol[k-1].a==sol[j].a&&sol[j].b==maxB)//VERIFICA OPERACION 2-- LLENAR BALDE B     
                 {
                     encontrado=true;
-                    break;
                 }
                 else if(i==2&&sol[j].a==0&&sol[j].b==sol[k-1].b)//VERIFICA OPERACION 3-- VACIAR BALDE A  
                 {
                     encontrado=true;
-                    break;
                 }
                 else if(i==3&&sol[j].a==sol[k-1].a&&sol[j].b==0)//VERIFICA OPERACION 4-- VACIAR BALDE B     
                 {
                     encontrado=true;
-                    break;
                 }     
                 else if(i==4)//VERIFICA OPERACION 5-- PASAR AGUA DEL BALDE A a el BALDE B SIN DERRAMAR    
                 {
@@ -94,8 +90,7 @@ int construyeCandidatos(int k,Estado cand[])
                             &&(sol[j].b==maxB)
                        )
                     {
-                        encontrado=true;
-                        break;                        
+                        encontrado=true;                       
                     }
                     else if(
                             (sol[k-1].a<maxB-sol[k-1].b)
@@ -104,7 +99,6 @@ int construyeCandidatos(int k,Estado cand[])
                             )
                     {
                         encontrado=true;
-                        break;
                     }
                 }  
                 else if(i==5)//VERIFICA OPERACION 6-- PASAR AGUA DEL BALDE B a el BALDE A SIN DERRAMAR       
@@ -115,8 +109,7 @@ int construyeCandidatos(int k,Estado cand[])
                             &&(sol[j].b==sol[k-1].b-(maxA-sol[k-1].a))
                        )
                     {
-                        encontrado=true;
-                        break;                        
+                        encontrado=true;                     
                     }
                     else if(
                             (sol[k-1].b<maxA-sol[k-1].a)
@@ -125,13 +118,16 @@ int construyeCandidatos(int k,Estado cand[])
                             )
                     {
                         encontrado=true;
-                        break;
                     }
-                }
+                }                
                 if(encontrado)   
-                {                                                          
+                {                     
+                    /*                                     
+                    //COMENTARIO DEBUG
                     cout<<"Incidencia en operacion["<<i+1<<"] con el estado("<<sol[j].a<<","<<sol[j].b<<") ubicado en el nivel: "<<k<<endl;
-                    system("pause");     
+                    system("pause");  
+                    */  
+                    break; 
                 }                 
         }
         //GENERA LOS CANDIDATOS NECESARIOS
@@ -191,8 +187,11 @@ int construyeCandidatos(int k,Estado cand[])
                 cand[ncand].m=6;	
                 }
             }
-            //cout<<"Guardando candidato con operacion["<<i+1<<"] con el estado("<<cand[ncand].a<<","<<cand[ncand].b<<") ubicado en el nivel: "<<k<<endl;
-            //system("pause");                             
+            /*
+            //COMENTARIO DEBUG
+            cout<<"Guardando candidato con operacion["<<i+1<<"] con el estado("<<cand[ncand].a<<","<<cand[ncand].b<<") ubicado en el nivel: "<<k<<endl;
+            system("pause"); 
+            */                                       
 			ncand++;
         }
     }
@@ -214,9 +213,11 @@ void bt(int k)
                 sol[k].a=cand[i].a;
                 sol[k].b=cand[i].b;
                 sol[k].m=cand[i].m;
-                //cout<<"Guardando candidato con operacion["<<i+1<<"] con el estado("<<cand[ncand].a<<","<<cand[ncand].b<<")"<<endl;
-                //system("pause");                      
-			    //COMENTARIO DEBUG
+                /*
+                //COMENTARIO DEBUG
+                cout<<"Posible solucion con operacion["<<sol[k].m<<"] con el estado("<<sol[k].a<<","<<sol[k].b<<") ubicado en el nivel: "<<k<<endl;
+                system("pause");  
+                */                   
 			    bt(k+1);
       	}
    	}	
