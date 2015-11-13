@@ -18,7 +18,7 @@ void impSol(int k)
 {
     if(nSol>0)
     {   
-        cout<<"Estado inicial(A,B) de los baldes= (0,0)"<<endl;          
+        cout<<"Estado inicial(A,B) de los baldes=(0,0)"<<endl;          
     	for(int j=1; j<k; j++)
     	{
             if(sol[j].m==1)
