@@ -200,7 +200,7 @@ int construyeCandidatos(int k,Estado cand[])
 void bt(int k)
 {   
 	Estado cand[LIM];
-	if(sol[k-1].a==4||sol[k-1].b==4) 
+	if(sol[k-1].a==pivote||sol[k-1].b==pivote) 
 	{
         nSol++;
    		impSol(k);
